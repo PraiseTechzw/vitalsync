@@ -430,6 +430,7 @@
         <div class="result-flow-header">
           <div class="result-flow-meta" id="resultFlowMeta"></div>
           <div class="result-flow-actions">
+            <button class="btn btn-primary" id="talkDoctorBtn">🩺 Talk to Doctor</button>
             <button class="btn btn-outline" id="downloadPdfBtn">📄 Download Report</button>
             <button class="btn btn-ghost" id="saveHistoryBtn">💾 Save to History</button>
             <button class="btn btn-primary" id="newDiagnosisBtn">+ New Diagnosis</button>
@@ -550,6 +551,29 @@
     <div class="modal-footer">
       <button class="btn btn-ghost" id="cancelPdfBtn">Cancel</button>
       <button class="btn btn-primary" id="confirmPdfBtn">📄 Generate PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- DOCTOR CONTACT MODAL -->
+<div id="doctorModal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Talk to a Real Doctor</h3>
+      <button class="modal-close" id="closeDoctorModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Connect with a licensed clinician using one of the options below.</p>
+      <ul class="report-features">
+        <li>📞 Call doctor hotline</li>
+        <li>💬 Chat on WhatsApp</li>
+        <li>📅 Book a clinic consultation</li>
+      </ul>
+    </div>
+    <div class="modal-footer" style="justify-content:flex-start;flex-wrap:wrap">
+      <button class="btn btn-primary" id="doctorCallBtn">📞 Call Doctor</button>
+      <button class="btn btn-outline" id="doctorWhatsAppBtn">💬 WhatsApp</button>
+      <button class="btn btn-ghost" id="doctorBookBtn">📅 Book Visit</button>
     </div>
   </div>
 </div>
