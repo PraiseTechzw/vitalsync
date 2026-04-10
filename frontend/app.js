@@ -8,6 +8,12 @@
 
 'use strict';
 
+const DOCTOR_CONTACT = {
+  phone: '+263771234567',
+  whatsapp: '+263771234567',
+  bookingUrl: 'https://example-clinic-booking.com',
+};
+
 // ─── Symptom Database ───────────────────────────────────────────
 const SYMPTOMS_EN = [
   "fever","cough","sore throat","headache","vomiting","nausea",
@@ -308,6 +314,12 @@ document.addEventListener('DOMContentLoaded', () => {
   $('closePdfModal').addEventListener('click', () => $('pdfModal').classList.add('hidden'));
   $('cancelPdfBtn').addEventListener('click', () => $('pdfModal').classList.add('hidden'));
   $('confirmPdfBtn').addEventListener('click', generatePdf);
+
+  $('talkDoctorBtn')?.addEventListener('click', () => $('doctorModal')?.classList.remove('hidden'));
+  $('closeDoctorModal')?.addEventListener('click', () => $('doctorModal')?.classList.add('hidden'));
+  $('doctorCallBtn')?.addEventListener('click', callDoctorNow);
+  $('doctorWhatsAppBtn')?.addEventListener('click', openDoctorWhatsApp);
+  $('doctorBookBtn')?.addEventListener('click', openDoctorBooking);
 
   $('chatSendBtn')?.addEventListener('click', submitChatAnswer);
   $('chatInputField')?.addEventListener('keydown', e => {
@@ -1368,6 +1380,24 @@ function showLoading(show) {
   const o=$('loadingOverlay');
   if (o) show?o.classList.remove('hidden'):o.classList.add('hidden');
 }
+
+function callDoctorNow() {
+  $('doctorModal')?.classList.add('hidden');
+  window.location.href = `tel:${DOCTOR_CONTACT.phone}`;
+}
+
+function openDoctorWhatsApp() {
+  $('doctorModal')?.classList.add('hidden');
+  const msg = encodeURIComponent('Hello doctor, I need a consultation based on my symptom analysis.');
+  const number = DOCTOR_CONTACT.whatsapp.replace(/\+/g, '');
+  window.open(`https://wa.me/${number}?text=${msg}`, '_blank');
+}
+
+function openDoctorBooking() {
+  $('doctorModal')?.classList.add('hidden');
+  window.open(DOCTOR_CONTACT.bookingUrl, '_blank');
+}
+
 let toastT;
 function showToast(msg,type='info') {
   let t=document.getElementById('toast');
