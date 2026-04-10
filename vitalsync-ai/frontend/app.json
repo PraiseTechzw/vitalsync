@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "VitalSync AI",
+    "slug": "vitalsync-ai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0A1528"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0A1528"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
