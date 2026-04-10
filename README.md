@@ -1,55 +1,68 @@
-# HealthGuard AI v4.1 — Professional Medical Intelligence Platform
+# HealthGuard AI v4.2
 
-## 🚀 Quick Start
+AI-assisted symptom triage web app with multilingual support, smart interview flow, heart-rate scan integration, and clinical handoff options.
+
+## Quick Start
 ```bash
 npm install
 cp .env.example .env
-# Add your OPENAI_API_KEY to .env
+# Add OPENAI_API_KEY in .env (optional, fallback works without it)
 npm start
 # Open http://localhost:3000
 ```
 
-## ✨ New Features in v4.1
+## Current Features
 
 ### Frontend
-- **Modern medical-grade UI** — Clean light theme with teal/blue accents
-- **Symptom Autocomplete** — Real-time suggestions as you type
-- **Voice Input** — Microphone symptom entry (English & Tamil)
-- **Quick Select Grid** — Toggle common symptoms with one click
-- **Disease Probability Chart** — Chart.js horizontal bar chart
-- **Prediction History** — LocalStorage + server-side history panel
-- **PDF Report Download** — Full medical report as HTML/PDF
-- **AI Clinical Explanation** — Claude-powered disease explanations
-- **Dark Mode Toggle** — System-aware theme switching
-- **Multi-Language** — English & Tamil support throughout
-- **Health Risk Indicator** — Color-coded green/yellow/red/emergency
-- **Loading Animations** — Professional pulse ring loading overlay
-- **Responsive Design** — Mobile-first layout
+- Modern responsive UI with glass-style polish
+- Symptom input via text, quick-select chips, and voice
+- Smart adaptive interview (asks only missing details)
+- Result view with risk level, confidence, and explanation
+- Heart-rate scan module (camera/demo)
+- History tracking and downloadable report
+- **Talk to Doctor flow** on results page:
+	- Call doctor
+	- WhatsApp doctor
+	- Book clinic visit
+- Theme toggle (light/dark)
+- Language support in app flow: English, Shona, Ndebele
 
-### Backend (server.js)
+### Backend
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/analyze` | POST | Symptom analysis (OpenAI → Smart Triage fallback) |
-| `/api/explain` | POST | AI clinical explanation for a condition |
-| `/api/history` | GET | Server-side prediction history |
-| `/api/health` | GET | Server + AI status |
-| `/api/symptoms` | GET | Symptom database (EN/TA) |
-| `/api/stats` | GET | Analytics & model metrics |
-| `/api/provider` | GET | Active AI provider config |
+| `/api/analyze` | POST | Main symptom triage analysis |
+| `/api/interview` | POST | Interview-enriched analysis |
+| `/api/explain` | POST | AI clinical explanation |
+| `/api/history` | GET | Server prediction history |
+| `/api/health` | GET | Service health/status |
+| `/api/symptoms` | GET | Symptom + diagnosis data |
+| `/measure-heart-rate` | POST | Heart rate measurement service |
 
-## 🏗️ Project Structure
-```
-├── frontend/
-│   ├── index.html      ← Main app shell
-│   ├── styles.css      ← Full CSS with dark mode & responsive
-│   └── app.js          ← Complete feature JS
-├── backend/
-│   └── server.js       ← Express API with all endpoints
-├── data/
-│   └── symptoms.json   ← Symptom database (EN/TA/HI)
-└── .env.example        ← Configuration template
+## Data
+
+`data/symptoms.json` now includes:
+- `symptoms`: `en`, `ta`, `hi`, `sn`, `nd`
+- `symptomMap`: `ta`, `hi`, `sn`, `nd`
+- `diagnosisRules` with localized condition/advice entries for `sn` and `nd`
+- `ui` labels for `en`, `ta`, `hi`, `sn`, `nd`
+
+## Project Structure
+```text
+frontend/
+	index.html
+	styles.css
+	app.js
+backend/
+	server.js
+data/
+	symptoms.json
+heart_rate_detector.py
 ```
 
-## ⚕️ Disclaimer
-This is an AI-assisted tool for informational purposes only. Not a substitute for professional medical advice.
+## Notes
+- Without `OPENAI_API_KEY`, the app uses smart fallback triage logic.
+- Doctor contact values are configured in `frontend/app.js` under `DOCTOR_CONTACT`.
+
+## Disclaimer
+This tool provides decision support only and is not a replacement for professional medical care.
 
