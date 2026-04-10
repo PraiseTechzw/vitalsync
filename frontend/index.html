@@ -557,23 +557,35 @@
 
 <!-- DOCTOR CONTACT MODAL -->
 <div id="doctorModal" class="modal-overlay hidden">
-  <div class="modal-card">
+  <div class="modal-card doctor-modal-card">
     <div class="modal-header">
-      <h3>Talk to a Real Doctor</h3>
+      <h3>Talk to Doctor (In-App)</h3>
       <button class="modal-close" id="closeDoctorModal">✕</button>
     </div>
     <div class="modal-body">
-      <p>Connect with a licensed clinician using one of the options below.</p>
-      <ul class="report-features">
-        <li>📞 Call doctor hotline</li>
-        <li>💬 Chat on WhatsApp</li>
-        <li>📅 Book a clinic consultation</li>
-      </ul>
+      <p>Chat directly with a clinician through this system. Prescription will be issued here.</p>
+
+      <div class="doctor-chat-wrap">
+        <div id="doctorSessionStatus" class="doctor-session-status">Connecting to doctor...</div>
+        <div id="doctorChatMessages" class="doctor-chat-messages"></div>
+        <div class="doctor-chat-input-row">
+          <textarea id="doctorChatInput" class="doctor-chat-input" rows="2" placeholder="Type your question to the doctor..."></textarea>
+          <button class="btn btn-primary" id="doctorSendBtn">Send</button>
+        </div>
+      </div>
+
+      <div class="doctor-prescription-wrap">
+        <div class="doctor-prescription-head">
+          <strong>Digital Prescription</strong>
+          <button class="btn btn-outline" id="doctorPrescriptionBtn">Generate Prescription</button>
+        </div>
+        <div id="doctorPrescriptionContent" class="doctor-prescription-content">
+          <p>No prescription yet. After consultation, click <strong>Generate Prescription</strong>.</p>
+        </div>
+      </div>
     </div>
-    <div class="modal-footer" style="justify-content:flex-start;flex-wrap:wrap">
-      <button class="btn btn-primary" id="doctorCallBtn">📞 Call Doctor</button>
-      <button class="btn btn-outline" id="doctorWhatsAppBtn">💬 WhatsApp</button>
-      <button class="btn btn-ghost" id="doctorBookBtn">📅 Book Visit</button>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="closeDoctorModalFooter">Close</button>
     </div>
   </div>
 </div>
